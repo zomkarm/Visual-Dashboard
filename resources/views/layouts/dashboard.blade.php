@@ -20,8 +20,7 @@
         @include('components.sidebar')
 
         <div id="layoutSidenav_content">
-            @yield('content')
-
+            @yield('dashboard_content')
             @include('components.footer')
         </div>
         

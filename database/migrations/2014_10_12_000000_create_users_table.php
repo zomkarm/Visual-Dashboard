@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -20,6 +23,9 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::insert('insert into users (name,email,password,remember_token,created_at,updated_at) values (?, ?, ? , ?, ?, ?)', 
+        ["Admin", 'admin@test.com',Hash::make('Admin@123'),Str::random(10),date('Y-m-d h:i:s'),date('Y-m-d h:i:s')]);
     }
 
     /**

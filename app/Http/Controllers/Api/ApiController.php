@@ -37,11 +37,15 @@ class ApiController extends Controller
      * Api to fetch the data
      */
     public function data(Request $request){
-        $data = Posts::all();
+        $data = Posts::select('likelihood')->get();
+        $likelihood = array();
+        foreach ($data as $s) {
+            array_push($likelihood,$s->likelihood);
+        }
 
         return response()->json([
             'status'=>'true',
-            'data'=>$data,
+            'data'=>$likelihood,
         ],200);
     }
 }

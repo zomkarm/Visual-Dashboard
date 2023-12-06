@@ -23,7 +23,8 @@ Route::middleware('auth:sanctum')->group(function(){
     return $request->user();
     });
 
-    Route::get('/data',[ApiController::class,'data']);
 
 });
+
+Route::get('/data',[ApiController::class,'data']);
 
